@@ -1,0 +1,11 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}New CalculHome{% endblock %}
+
+{% block body %}
+    <h1>Create new CalculHome</h1>
+
+    {{ include('admin_calcul_home/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_calcul_home_index') }}">back to list</a>
+{% endblock %}

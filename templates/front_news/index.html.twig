@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ home.titre }}
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container py-4 py-xl-5">
+		<div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+			{% for service in services %}
+				<div class="col">
+					<div class="card" data-bss-hover-animate="pulse">
+						<div class="card-body p-4">
+							<div class="bs-icon-md bs-icon-rounded d-flex justify-content-xxl-center align-items-xxl-center d-inline-block mb-3 bs-icon" style="padding-bottom: 0px;padding-right: 0px;padding-left: 0px;margin-bottom: 11px;margin-left: 158px;margin-right: 158px;">
+								<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewbox="0 0 16 16" class="bi bi-{{ service.iconName}} fs-1 text-dark">
+									<i class="fa-solid fa-{{ service.iconName }} fa-2xl" style="color: #000000;"></i>
+								</svg>
+							</div>
+							<h4 class="text-uppercase d-xxl-flex justify-content-xxl-center card-title">{{ service.titre }}</h4>
+							<p class="card-text">{{ service.description }}</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+		</div>
+	</div>
+	<div class="container py-4 py-xl-5">
+		<img class="card-img-top w-100 d-block fit-cover rounded" style="height: 200px;" src="{{ asset('images/news/' ~ news.imageName )}}">
+
+		<p class="text-primary card-text mb-0">{{ news.createdAt ? news.createdAt|date('d-m-Y') : '' }}</p>
+		<h4 class="card-title">{{ news.titre }}</h4>
+		<p class="card-text">{{ news.description }}</p>
+	</div>
+
+	<p>Dernieres news
+	</p>
+
+	{% for news in news %}
+		{% if news.titre is not null %}
+			<div class="col">
+				<div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="{{ asset('images/news/' ~ news.imageName )}}">
+					<div class="card-body p-4" data-bss-hover-animate="pulse">
+						<p class="text-primary card-text mb-0">{{ news.createdAt ? news.createdAt|date('d-m-Y') : '' }}</p>
+						<h4 class="card-title">{{ news.titre }}</h4>
+						{# on rajoute un maximum de caractere à news.description #}
+						<p class="card-text">{{ news.description|length > 150 ? news.description|slice(0,150) ~ '...':news.description}}</p>
+						<a href="{{ path('app_front_news', {'slug': news.slug }) }}" class="btn btn-dark">Voir</a>
+
+
+						<div class="d-flex">
+							<div></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% else %}
+			<p>Il n'y a pas encore de news.</p>
+		{% endif %}
+	{% endfor %}
+
+
+	{% include '@templates/front_common/_partenaires.html.twig' %}
+
+
+{% endblock %}

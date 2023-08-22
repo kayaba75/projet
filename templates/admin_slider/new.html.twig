@@ -1,0 +1,11 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}New Slider{% endblock %}
+
+{% block body %}
+    <h1>Create new Slider</h1>
+
+    {{ include('admin_slider/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_slider_index') }}">back to list</a>
+{% endblock %}

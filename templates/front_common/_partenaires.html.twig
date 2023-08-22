@@ -1,0 +1,19 @@
+    <h1 class="text-center" style="margin-top: 30px;font-family: Lato, sans-serif;font-weight: 100;">NOS PARTENAIRES</h1>
+    <div class="col">
+        <section>
+            <p class="text-center">Retrouvez la liste de tous nos partenaires</p>
+            <div class="client-section" style="background: var(--bs-body-bg);">
+                <div class="container d-flex justify-content-center client-container">
+                    <div class="row d-flex justify-content-center client-row">
+                    {% for partenaire in partenaires %}
+                    {% if partenaire.imageName is not null %}
+                        <div class="col-6 col-sm-4 col-md-2 col-lg-2 col-xl-2 d-flex justify-content-center align-items-start no-pad">
+                            <div><a href="#"><img class="img-fluid client-image" src="{{ asset ('images/partenaires/' ~ partenaire.imageName) }}" style="height: 70px;"></a></div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>

@@ -1,0 +1,38 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}CalculHome{% endblock %}
+
+{% block body %}
+    <h1>CalculHome</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ calcul_home.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ calcul_home.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ calcul_home.description }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ calcul_home.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>ImageBgName</th>
+                <td>{{ calcul_home.imageBgName }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_calcul_home_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_calcul_home_edit', {'id': calcul_home.id}) }}">edit</a>
+
+    {{ include('admin_calcul_home/_delete_form.html.twig') }}
+{% endblock %}

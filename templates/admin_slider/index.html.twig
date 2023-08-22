@@ -1,0 +1,50 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Slider index{% endblock %}
+
+{% block body %}
+    <h1>Slider index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>UpdatedAt</th>
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>RankNumber</th>
+                <th>Tag</th>
+                <th>IsActive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for slider in sliders %}
+            <tr>
+                <td>{{ slider.id }}</td>
+                <td>
+                
+                <img src="{{ asset('images/slider/' ~ slider.imageName)}}" alt="" class="img-list">
+                </td>
+                <td>{{ slider.updatedAt ? slider.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ slider.titre }}</td>
+                <td>{{ slider.texte }}</td>
+                <td>{{ slider.rankNumber }}</td>
+                <td>{{ slider.tag }}</td>
+                <td>{{ slider.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_admin_slider_show', {'id': slider.id}) }}">show</a>
+                    <a href="{{ path('app_admin_slider_edit', {'id': slider.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_slider_new') }}">Create new</a>
+{% endblock %}

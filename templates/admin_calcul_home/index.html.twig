@@ -1,0 +1,41 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}CalculHome index{% endblock %}
+
+{% block body %}
+    <h1>CalculHome index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>IsActive</th>
+                <th>ImageBgName</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for calcul_home in calcul_homes %}
+            <tr>
+                <td>{{ calcul_home.id }}</td>
+                <td>{{ calcul_home.titre }}</td>
+                <td>{{ calcul_home.description }}</td>
+                <td>{{ calcul_home.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ calcul_home.imageBgName }}</td>
+                <td>
+                    <a href="{{ path('app_admin_calcul_home_show', {'id': calcul_home.id}) }}">show</a>
+                    <a href="{{ path('app_admin_calcul_home_edit', {'id': calcul_home.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_calcul_home_new') }}">Create new</a>
+{% endblock %}

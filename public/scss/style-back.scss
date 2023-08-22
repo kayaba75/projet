@@ -1,0 +1,58 @@
+body{
+    .table-index{
+        tr{
+            th{
+                &:last-child{
+                    text-align: right;
+                }
+            }
+            td{
+                &:last-child{
+                    text-align: right;
+                }
+                .img-list{
+                    width:100%;
+                    max-width: 150px;
+                }
+            }
+        }
+    }
+    label{
+        &.required{
+            &:after{
+                content: "*";
+                color: red;
+            }
+        }
+    }
+    .bg-form-image{
+        background: #cdc8c8;
+        .bt-trash{
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+
+    @mixin focus-effect{
+        color: #212529;
+        background-color: #fff;
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
+    }
+    .select2-container--default{
+        .select2-selection--multiple {
+            border: 1px solid #ced4da;
+            border-radius: .375rem;
+            padding: .375rem .75rem;
+            &:focus{
+                @include focus-effect;
+            }
+            &:focus-within{
+                @include focus-effect;
+            }
+        }
+    } 
+}
+

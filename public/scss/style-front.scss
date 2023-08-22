@@ -1,0 +1,58 @@
+.parallax {
+  /* The image used */
+
+
+  /* Set a specific height */
+  min-height: 200px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  
+}
+aside.clients img {
+  margin: 50px auto;
+}
+
+.client-heading {
+  color: #ffffff;
+  font-size: 10px;
+  padding-top: 20px;
+  font-family: Lato, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.no-pad {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.client-row {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+}
+
+.client-container {
+  max-width: 100%;
+}
+
+.client-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  filter: grayscale(100%);
+}
+
+.client-image:hover {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  filter: grayscale(0%);
+}
+
+

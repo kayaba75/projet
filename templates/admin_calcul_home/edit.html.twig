@@ -1,0 +1,13 @@
+{% extends 'base-backend-backend.html.twig' %}
+
+{% block title %}Edit CalculHome{% endblock %}
+
+{% block body %}
+    <h1>Edit CalculHome</h1>
+
+    {{ include('admin_calcul_home/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_admin_calcul_home_index') }}">back to list</a>
+
+    {{ include('admin_calcul_home/_delete_form.html.twig') }}
+{% endblock %}

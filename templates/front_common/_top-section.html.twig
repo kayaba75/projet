@@ -1,0 +1,36 @@
+<div class="float-none" style="background: url({{ asset ('img/' ~ calcul_home.imageBgName )}} ) center / cover;padding-bottom: 2px;margin-bottom: -2px;padding-top: 7px;margin-top: 10px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 p-3">
+				<h3>
+					<span style="color: rgb(255, 255, 255);">
+						{{ calcul_home.titre }}</span>
+				</h3>
+				<p style="text-align:left"><br><span style="color: rgb(255, 255, 255);">
+						{{ calcul_home.description }}</p>
+				</p>
+			</div>
+			<div class="col-md-4 p-3" style="text-align:center">
+				<h3>
+					<span style="color: rgb(255, 255, 255);">Calcul de votre retraite</span>
+
+				</h3>
+				<form>
+
+					<input type="number" id="salaire" style="margin-bottom:10px" placeholder="Salaire annuel moyen">
+
+					<br>
+					
+					{#  au click sur le bouton submit afficher une alert et la variable javascript salaireMensuel #}
+
+					<button class="btn btn-warning" style="width: 195px" id="envoyer" type="button"> Calculez </button>
+					<p id="resultat" class="text-success" style="font-weight:bold"></p>
+
+
+				</form>
+
+
+			</div>
+		</div>
+	</div>
+</div>
