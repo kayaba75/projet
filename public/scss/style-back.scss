@@ -54,5 +54,23 @@ body{
             }
         }
     } 
+    .admin-nav{
+        a{
+            color: black;
+            &:hover{
+                color: white;
+            }
+        }
+    }
+    .admin-nav a{
+        background: white
+    }
+    .active {
+        background: #343a40 !important;
+
+    }
+    .sidebar-item a:hover{
+        background: #343a40 !important;
+    }
 }
 

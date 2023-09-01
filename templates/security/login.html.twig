@@ -1,38 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Se connecter!{% endblock %}
+{% block title %}Se connecter!
+{% endblock %}
 
 {% block body %}
-<div class="container">
-<div class="d-flex justify-content-center m-5">
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="rf-register-form">
+					<form class="rg-form" method="post">
+						{% if error %}
+							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						{% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion </a>
-        </div>
-    {% endif %}
+						{% if app.user %}
+							<div class="mb-3">
+								Vous êtes connecté en tant que
+								{{ app.user.userIdentifier }},
+								<a href="{{ path('app_logout') }}">Déconnexion
+								</a>
+							</div>
+						{% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Merci de vous connecter</h1>
-    <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control mb-3" autocomplete="email" required autofocus>
-    <label for="inputPassword">Mot de passe</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+						<h2>Merci de vous connecter</h2>
+						<p>
+							Veuillez saisir votre email ainsi que votre mot de passe.</p>
+						<div class="rf-input-container">
+							<label for="inputEmail" >
+								<i class="fa fa-user rf-icon"></i>
+							</label>
+							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email" class="form-control rf-input-field" autocomplete="email" required autofocus>
+						</div>
+						<div class="rf-input-container">
+							<label for="inputPassword" style="padding-top:5px">
+								<i class="fa fa-key rf-icon"></i>
+							</label>
+							<input type="password" name="password" placeholder="Mot de passe" id="inputPassword" class="form-control rf-input-field" autocomplete="current-password" required>
 
-    <input type="hidden" name="_csrf_token"
-        value="{{ csrf_token('authenticate') }}"
-    >
+						</div>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    <button class="btn btn-lg btn-success mt-3" type="submit">
-    Se connecter
-    </button>
+						<button class="btn btn-primary rf-btn" type="submit">
+							Se connecter
+						</button>
 
-    
 
-</form>
-</div>
-</div>
-{% endblock %}
+					</form>
+				</div>
+			</div>
+			<div class="col-md-4 frconnect"><img src="{{ asset('images/home/register.png')}}" style="width: 400px;height: 400px;margin-left: 50px;padding-top: 0px;margin-top: 10px;"></div>
+		</div>
+	</div>
+</div>{% endblock %}

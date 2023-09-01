@@ -1,4 +1,5 @@
-<form method="post" action="{{ path('app_admin_home_delete', {'id': home.id}) }}" onsubmit="return confirm('Êtes vous sur de vouloir supprimer?');">
+<form method="post"  action="{{ path('app_admin_home_delete', {'id': home.id}) }}" onsubmit="return confirm('Êtes vous sur de vouloir supprimer?');">
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ home.id) }}">
-    <button class="btn btn-danger"><i class="align-middle" data-feather="trash"> </i></button>
+    <button class="btn btn-danger">
+    <i class="align-middle" data-feather="trash"> </i></button>
 </form>

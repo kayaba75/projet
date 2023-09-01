@@ -16,11 +16,11 @@
                 <th>Id</th>
                 <th>Titre</th>
                 <th>Description</th>
-                <th>Signature</th>
-                <th>ImageName</th>
+                {# <th>Signature</th> #}
+                {# <th>ImageName</th> #}
                 <th>Logo</th>
-                <th>IsActive</th>
-                <th>actions</th>
+                <th>Actif</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -29,20 +29,18 @@
                 <td>{{ home.id }}</td>
                 <td>{{ home.titre }}</td>
                 <td>{{ home.description }}</td>
-                <td>{{ home.signature }}</td>
-                <td> 
+                {# <td>{{ home.signature }}</td> #}
+                {# <td> 
                 <img src="{{ asset('images/home/' ~ home.imageName)}}" alt="" class="img-list">
-                </td>
+                </td> #}
                 <td> <img src="{{ asset('images/home/' ~ home.logoName)}}" alt="" class="img-list">
 </td>
-                <td>{{ home.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ home.isActive ? 'Oui' : 'Non' }}</td>
                 <td>
-                {% include "admin_home/_delete_form.html.twig" %}
+                
                 <a href="{{ path('app_admin_home_show', {'id': home.id}) }}" class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
-             
-               
-               
                 <a href="{{ path('app_admin_home_edit', {'id': home.id }) }}" class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
+                {% include "admin_home/_delete_form.html.twig" %}
                 </td>
             </tr>
         {% else %}

@@ -1,13 +1,13 @@
 {% extends 'base-backend.html.twig' %}
 
-{% block title %}Edit News{% endblock %}
+{% block title %}Editer News{% endblock %}
 
 {% block body %}
-    <h1>Edit News</h1>
+    <h1>Editer News</h1>
 
-    {{ include('admin_news/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin_news/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('app_admin_news_index') }}">back to list</a>
+    <a href="{{ path('app_admin_news_index') }}">Retour à la liste</a>
 
     {{ include('admin_news/_delete_form.html.twig') }}
 {% endblock %}

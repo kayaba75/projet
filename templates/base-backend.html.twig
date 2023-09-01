@@ -1,8 +1,35 @@
+{# On crée des variables pour rendre dynamique l'attribution de la classe active sur les liens du menu de _left-nav #}
+{% set dashboardActive = "" %}
+{% set userActive = "" %}
+{% set homeActive = "" %}
+{% set sliderActive = "" %}
+{% set servicesActive = "" %}
+{% set calculActive = "" %}
+{% set partenairesActive = "" %}
+{% set newsActive = "" %}
+{# On vérifie si un mot est contenu dans la route (barre d'adresse) et si c'est le cas on modifie la valeur de la variable concernée #}
+{% if "dashboard" in app.request.pathinfo %}
+{% set dashboardActive = "active" %}
+{% elseif "user" in app.request.pathinfo %}
+{% set userActive = "active" %}
+{% elseif "home" in app.request.pathinfo %}
+{% set homeActive = "active" %}
+{% elseif "slider" in app.request.pathinfo %}
+{% set sliderActive = "active" %}
+{% elseif "services" in app.request.pathinfo %}
+{% set servicesActive = "active" %}
+{% elseif "calcul" in app.request.pathinfo %}
+{% set calculActive = "active" %}
+{% elseif "partenaires" in app.request.pathinfo %}
+{% set partenairesActive = "active" %}
+{% elseif "news" in app.request.pathinfo %}
+{% set newsActive = "active" %}
+{% endif %}
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# On charge la feuille de style d'adminkit #}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -13,6 +40,8 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         {# On charge la feuille de style de notre projet #}
         <link rel="stylesheet" href="{{ asset('css/style-back.min.css') }}">
+        {# On charge la feuille de style de fontawesome #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />        <link rel="stylesheet" href="{{ asset('css/Articles-Cards-images.css') }}">
 
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
         {% block stylesheets %}{% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base-backend.html.twig' %}
 
-{% block title %}New News{% endblock %}
+{% block title %}Nouvelle News{% endblock %}
 
 {% block body %}
-    <h1>Create new News</h1>
+    <h1 class="mb-5">Créer une nouvelle news</h1>
 
     {{ include('admin_news/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_news_index') }}">back to list</a>
+    <a href="{{ path('app_admin_news_index') }}" class="text-black">Retour à la liste</a>
 {% endblock %}
