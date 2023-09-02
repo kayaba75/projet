@@ -12,7 +12,7 @@ class PartenairesFixtures extends Fixture
     {
         $partenaires = new Partenaires();
         $partenaires->setTitre('Cnav');
-        $partenaires->setImageName("Caisse_Nationale_d'Assurance_Vieillesse.svg");
+        $partenaires->setImageName("Caisse_Nationale_d'Assurance_Vieillesse.png");
         $partenaires->setIsActive(true);
         $manager->persist($partenaires);        
         
@@ -25,7 +25,7 @@ class PartenairesFixtures extends Fixture
         
         $partenaires = new Partenaires();
         $partenaires->setTitre('ursaaf');
-        $partenaires->setImageName("URSSAF_Logo.svg");
+        $partenaires->setImageName("URSSAF_Logo.png");
         $partenaires->setIsActive(true);
         $manager->persist($partenaires);        
         

@@ -19,10 +19,14 @@ class NewsType extends AbstractType
         $builder
             ->add('isActive', CheckboxType::class, ["required"=>true, "label"=>"Active", "attr"=>["class"=>"form-check-input"], "row_attr"=>["class"=>"form-switch"]])
             ->add('titre' , TextType::class, ["required"=>true])
-            ->add('description', CKEditorType::class, ["required"=>true, "label"=>"Description de la news"] )
+            // Régler le problème d'affichage de l'éditeur de texte
+            ->add('description', CKEditorType::class, [
+                "required" => true,
+                
+            ])
             ->remove('createdAt', DateTime::class, ['widget' => 'single_text'])
             ->remove('updatedAt', DateTime::class, ['widget' => 'single_text'])
-            ->remove('imageName')            
+            ->remove('imageName', TextType::class, ["required"=>true, "label"=>"Nom de l'image"])            
             ->add('imageFile', FileType::class, ["required"=>true, "label"=>"Image de la news"] )
             ;
     }

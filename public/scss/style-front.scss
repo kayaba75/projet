@@ -14,6 +14,7 @@
 }
 aside.clients img {
   margin: 50px auto;
+
 }
 
 .client-heading {
@@ -27,7 +28,7 @@ aside.clients img {
 
 .no-pad {
   padding-top: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
 }
 
 .client-row {
@@ -46,6 +47,7 @@ aside.clients img {
   margin-left: auto;
   margin-right: auto;
   filter: grayscale(100%);
+  border: 1px solid #ccc;
 }
 
 .client-image:hover {

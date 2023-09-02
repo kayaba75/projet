@@ -102,10 +102,10 @@ class News
         return $this->imageName;
     }
 
-    public function setImageName(string $imageName): static
+    public function setImageName(?string $image)
     {
-        $this->imageName = $imageName;
-
+        $this->imageName = $image;
+    
         return $this;
     }
     /**
