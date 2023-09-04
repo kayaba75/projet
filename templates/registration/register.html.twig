@@ -7,40 +7,39 @@
 	{% for flash_error in app.flashes('verify_email_error') %}
 		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 	{% endfor %}
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-				<div class="rf-register-form">
-
-					<h2>Inscription</h2>
-					<p>Créez votre espace personnel et accédez à de nombreux services et démarches en ligne.</p>
-					{{ form_errors(registrationForm) }}
-					{{ form_start(registrationForm) }}
-					<div class="rf-input-container">
-						<i class="fa fa-user rf-icon"></i>
-						{{ form_row(registrationForm.nom) }}</div>
-					<div class="rf-input-container">
-						<i class=" fa fa-envelope rf-icon"></i>
-						{{ form_row(registrationForm.email) }}</div>
-					<div class="rf-input-container">
-						<i class="fa fa-key rf-icon"></i>
-						{{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe',
-        }) }}
-					</div>
-
-					<div style="margin-left:58px">
-						{{ form_row(registrationForm.agreeTerms, { label: 'J\'acccepte les conditions générales d\'inscription' }) }}
-					</div>
-
-					<button class="btn btn-primary rf-btn" type="submit">Inscription</button>
-					{{ form_end(registrationForm) }}
-
-
-				</div>
-			</div>
-			<div class="col-md-4 frconnect"><img src="{{ asset('images/home/register.png')}}" style="width: 400px;height: 400px;margin-left: 50px;padding-top: 0px;margin-top: 70px;margin-bottom:100px"></div>
-		</div>
-	</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="rf-register-form">
+                <h2>Inscription</h2>
+                <p>Créez votre espace personnel et accédez à de nombreux services et démarches en ligne.</p>
+                {{ form_errors(registrationForm) }}
+                {{ form_start(registrationForm) }}
+                <div class="rf-input-container">
+                    <i class="fa fa-user rf-icon"></i>
+                    {{ form_row(registrationForm.nom) }}
+                </div>
+                <div class="rf-input-container">
+                    <i class="fa fa-envelope rf-icon"></i>
+                    {{ form_row(registrationForm.email) }}
+                </div>
+                <div class="rf-input-container">
+                    <i class="fa fa-key rf-icon"></i>
+                    {{ form_row(registrationForm.plainPassword, {
+                        label: 'Mot de passe',
+                    }) }}
+                </div>
+                <div style="margin-left:58px">
+                    {{ form_row(registrationForm.agreeTerms, { label: 'J\'acccepte les conditions générales d\'inscription' }) }}
+                </div>
+                <button class="btn btn-primary rf-btn" type="submit">Inscription</button>
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+        <div class="col-md-4 frconnect">
+            <img src="{{ asset('images/home/register.png')}}" style="max-width: 100%; height: auto; margin-left: 50px; padding-top: 0px; margin-top: 70px; margin-bottom:100px">
+        </div>
+    </div>
+</div>
 
 {% endblock %}

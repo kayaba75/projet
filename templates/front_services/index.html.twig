@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ home.titre }}
+{% endblock %}
+
+{% block body %}
+	<div class="container py-4 py-xl-5 mb-5">
+		<section id="services" class="services">
+			<div class="container-md section-title">
+
+				<div class="text-center">
+					<h2 class="text-center">Nos services</h2>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
+					</p>
+				</div>
+				<div class="row">
+					{% for service in services %}
+						<div class="col-12 col-xl-4 text-center col-md-3 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+							<div class="text-center icon-box">
+								<div class="icon">
+									<i class="fa fa-{{ service.iconName }}" style="margin-bottom: 15px;"></i>
+									<h4 class="title">{{ service.titre }}<a href="#"></a>
+									</h4>
+									<p class="description">{{ service.description }}<br/></p>
+								</div>
+								<a href="{{ path('app_front_services_show', {'slug': service.slug }) }}"><button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Prendre rendez-vous</button></a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				{# faire une présentation des étapes de prise de rendez-vous téléphonique ou physique en 3 étapes avec 3 icones #}
+
+				<!-- Étapes de prise de rendez-vous -->
+				<div class="row mt-5">
+					<div class="col-12">
+						<h2 class="text-center pb-5">Étapes de prise de rendez-vous</h2>
+					</div>
+					<div class="col-md-4 text-center">
+						
+							<div class="icon2">
+								<i class="fa-regular fa-calendar"></i>
+							</div>
+							<h4 class="title">Étape 1</h4>
+							<p class="description">Prenez rendez-vous selon les disponibilités proposées.</p>
+					
+					</div>
+					<div class="col-md-4 text-center">
+						
+							<div class="icon2">
+								<i class="fa-solid fa-phone-volume"></i>
+							</div>
+							<h4 class="title">Étape 2</h4>
+							<p class="description">Un conseiller expert en retraite vous contact pour confirmer la date et convenir d'un entretien téléphonique ou physique</p>
+						
+					</div>
+					<div class="col-md-4 text-center">
+						
+							<div class="icon2">
+								<i class="fa-regular fa-handshake"></i>
+							</div>
+							<h4 class="title">Étape 3</h4>
+							<p class="description">Le conseiller vous rapelle ou vous accueille le jour j.</p>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+{% endblock %}

@@ -27,7 +27,13 @@
 
 		</div>
 	</div>
-	<div class="container py-4 py-xl-5">
+	{# faire un lien en italic pour retourner à l'accueil #}
+
+	<div class="container py-4 py-xl-5 shadow-lg p-3 mb-5 bg-white rounded">
+		<a href="{{ path('app_home') }}" class="text-decoration-none text-dark">
+		<i class="fa-solid fa-arrow-left"></i>
+		Retour à l'accueil
+		</a>
 		<img class="card-img-top w-100 d-block fit-cover rounded" style="height: 200px;" src="{{ asset('images/news/' ~ new.imageName )}}">
 
 		<p class="text-primary card-text mb-0">{{ new.createdAt ? new.createdAt|date('d-m-Y') : '' }}</p>
@@ -35,8 +41,7 @@
 		<p class="card-text">{{ new.description|raw }}</p>
 	</div>
 
-	<h2>Dernieres news
-	</h2>
+	<h2>Dernieres news</h2>
 {# on affiche les dernieres news #}
 
 	{% include '@templates/front_common/_news.html.twig' %}

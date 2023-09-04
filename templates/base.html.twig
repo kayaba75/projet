@@ -18,7 +18,7 @@
     </head>
     <body>
         {% include 'front_common/_top-nav.html.twig' %}
-        <main class="container-xl py-4 bg-white">
+        <main class="container-xl py-4 bg-white d-flex flex-column min-vh-50">
         {% for label, messages in app.flashes %}
                             {% for message in messages %}
                                 <div class="alert alert-{{ label }} alert-dismissible fade show">

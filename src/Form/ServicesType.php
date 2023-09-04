@@ -18,8 +18,7 @@ class ServicesType extends AbstractType
             ->add('titre', TextType::class, ["required"=>true])
             ->add('description' , CKEditorType::class, ["required"=>true])
             ->add('iconName', TextType::class, ["required"=>true])
-            ->add('isActive', CheckboxType::class, ["required"=>true, "label"=>"Active", "attr"=>["class"=>"form-check-input"], "row_attr"=>["class"=>"form-switch"]])
-            ->add('updatedAt')
+            ->add('isActive', CheckboxType::class, ["required"=>true, "label"=>"Active", "attr"=>["class"=>"form-check-input"], "row_attr"=>["class"=>"form-switch"]])            ->add('updatedAt')
         ;
     }
 
