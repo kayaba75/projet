@@ -32,7 +32,7 @@
 
 		<p class="text-primary card-text mb-0">{{ new.createdAt ? new.createdAt|date('d-m-Y') : '' }}</p>
 		<h4 class="card-title">{{ new.titre }}</h4>
-		<p class="card-text">{{ new.description }}</p>
+		<p class="card-text">{{ new.description|raw }}</p>
 	</div>
 
 	<h2>Dernieres news

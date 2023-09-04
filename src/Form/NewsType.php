@@ -11,6 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class NewsType extends AbstractType
 {
@@ -24,8 +25,9 @@ class NewsType extends AbstractType
                 "required" => true,
                 
             ])
-            ->remove('createdAt', DateTime::class, ['widget' => 'single_text'])
-            ->remove('updatedAt', DateTime::class, ['widget' => 'single_text'])
+            // recuperer automatique et remplir createdAT avec la date du jour
+            ->add('createdAt', DateType::class, ["required"=>false, "label"=>"Date de création", "widget"=>"single_text", "data"=>new \DateTime()]) 
+            ->remove('updatedAt')
             ->remove('imageName', TextType::class, ["required"=>true, "label"=>"Nom de l'image"])            
             ->add('imageFile', FileType::class, ["required"=>true, "label"=>"Image de la news"] )
             ;

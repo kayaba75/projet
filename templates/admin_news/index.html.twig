@@ -27,7 +27,7 @@
             <tr>
                 {# <td>{{ news.id }}</td> #}
                 <td>{{ news.titre }}</td>
-                <td>{{ news.description }}</td>
+                <td>{{ news.description|slice(0,400)|raw }}</td>
                 <td>{{ news.createdAt ? news.createdAt|date('d-m-Y H:i:s') : '' }}</td>
                 {# <td>{{ news.updatedAt ? news.updatedAt|date('d-m-Y H:i:s') : '' }}</td> #}
                 <td> 
