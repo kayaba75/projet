@@ -17,11 +17,15 @@ class FrontNewsController extends AbstractController
     public function index($slug, NewsRepository $newsRepository, HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $calculHomeRepository, PartenairesRepository $partenairesRepository): Response
     {
         $home = $homeRepository->findOneBy(["isActive"=>true]);
+        // classer les news par date de création de la plus récente à la plus ancienne
+        // $lastnews = $newsRepository->findBy(["isActive"=>true], ["createdAt"=>"DESC"],["slug"=>$slug]);
+
         return $this->render('front_news/index.html.twig', [
             'home' => $home,
-            'news' => $newsRepository->findOneBy(['slug' => $slug]),
+            'new' => $newsRepository->findOneBy(["slug"=>$slug]),
+            'news' => $newsRepository->findBy(["isActive"=>true], ["createdAt"=>"DESC"]),
+            // 'lastnews' => $lastnews,
             'services' => $servicesRepository->findBy(["isActive"=>true]),
-            'calcul_home' => $calculHomeRepository->findOneBy(["isActive"=>true]),
             'partenaires' => $partenairesRepository->findBy(["isActive"=>true]),
             ]);
     }

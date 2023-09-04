@@ -1,23 +1,23 @@
-<div class="float-none" style="background: url({{ asset ('img/' ~ calcul_home.imageBgName )}} ) center / cover;padding-bottom: 2px;margin-bottom: -2px;padding-top: 7px;margin-top: 10px;">
+<div class="float-none" style="background: url({{ asset ('img/' ~ calcul_home.imageBgName )}} ) center / cover;padding-bottom: 2px;margin-bottom: -2px;padding-top: 7px;margin-top: 10px; min-height:22vh;">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 p-3">
-				<h3>
+				<h3 style="margin-bottom:0px">
 					<span style="color: rgb(255, 255, 255);">
 						{{ calcul_home.titre }}</span>
 				</h3>
 				<p style="text-align:left"><br><span style="color: rgb(255, 255, 255);">
-						{{ calcul_home.description }}</p>
+						{{ calcul_home.description |raw }}</p>
 				</p>
 			</div>
 			<div class="col-md-4 p-3" style="text-align:center">
-				<h3>
-					<span style="color: rgb(255, 255, 255);">Calcul de votre retraite</span>
+				<h3 style="margin-bottom:20px">
+					<span style="color: rgb(255, 255, 255)">Calcul de votre retraite</span>
 
 				</h3>
 				<form>
 
-					<input type="number" id="salaire" style="margin-bottom:10px" placeholder="Salaire annuel moyen">
+					<input type="number" id="salaire" class="rf-input" style="margin-bottom:10px;height:40px" placeholder="Salaire annuel moyen">
 
 					<br>
 					

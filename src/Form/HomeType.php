@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Home;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -17,7 +18,7 @@ class HomeType extends AbstractType
         $builder
             ->add('isActive', CheckboxType::class, ["required"=>false, "label"=>"Active", "attr"=>["class"=>"form-check-input"], "row_attr"=>["class"=>"form-switch"]])
             ->add('titre', TextType::class, ["required"=>false])
-            ->add('description', TextType::class, ["required"=>false])
+            ->add('description', CKEditorType::class, ["required"=>false])
             ->remove('signature')
             ->remove('imageName',)
             ->remove('logoName')

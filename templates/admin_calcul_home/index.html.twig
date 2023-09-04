@@ -21,7 +21,7 @@
             <tr>
                 <td>{{ calcul_home.id }}</td>
                 <td>{{ calcul_home.titre }}</td>
-                <td>{{ calcul_home.description }}</td>
+                <td>{{ calcul_home.description|raw }}</td>
                 <td>{{ calcul_home.isActive ? 'Yes' : 'No' }}</td>
                 <td>{{ calcul_home.imageBgName }}</td>
                 <td>
