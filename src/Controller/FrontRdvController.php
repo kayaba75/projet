@@ -40,8 +40,10 @@ class FrontRdvController extends AbstractController
             // recupere le services.titre pour l'envoyer dans getRdvDispo dans la classe setDays
             $services = $rdv->getServices()->getTitre();
             $nom = $this->getUser()->getUserIdentifier();;
+            // set le setStatus à en attente
+            $rdv->setStatus("En attente");
             $rdv->getRdvDispo()->setClient($nom);
-            $rdv->getRdvDispo()->setBookAvail("En attente");   
+            $rdv->getRdvDispo()->setBookAvail("En attente");
             $rdv->getRdvDispo()->setDay($services);      
             $entityManager->persist($rdv);
             $entityManager->flush();

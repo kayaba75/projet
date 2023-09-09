@@ -45,7 +45,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
-
+            $user->setRoles(["ROLE_USER"]);
             $entityManager->persist($user);
             $entityManager->flush();
             
@@ -84,8 +84,8 @@ $this->addFlash('success', 'Votre inscription a bien été prise en compte. Veui
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+            return $this->redirectToRoute('app_register');   
 
-            return $this->redirectToRoute('app_register');         
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates)

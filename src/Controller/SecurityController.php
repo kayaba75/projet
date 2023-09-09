@@ -23,6 +23,7 @@ class SecurityController extends AbstractController
         $lastUsername = $authenticationUtils->getLastUsername();
         $home = $homeRepository->findOneBy(["isActive"=>true]);
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'home' => $home,]);
+
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
