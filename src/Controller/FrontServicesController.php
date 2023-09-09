@@ -13,10 +13,14 @@ class FrontServicesController extends AbstractController
     #[Route('/services', name: 'app_front_services')]
     public function index(ServicesRepository $servicesRepository,HomeRepository $homeRepository): Response
     {
+   
+   
         return $this->render('front_services/index.html.twig', [
             'home' => $homeRepository->findOneBy(["isActive"=>true]),   
-            'services' => $servicesRepository->findAll(),     ]);
-    }
+            'services' => $servicesRepository->findAll(), 
+
+        ]);
+        } 
     // creer une route pour le slug
     #[Route('/services/{slug}', name: 'app_front_services_show')]
     public function show($slug,ServicesRepository $servicesRepository,HomeRepository $homeRepository): Response

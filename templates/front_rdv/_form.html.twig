@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    {{ form_row(form.services)}}
+   
+ {{ form_row(form.rdvDispo)}}
+
+    {{ form_row(form.commentaire)}}
+    
+    <button class="btn btn-success mb-1">{{ button_label|default('Enregistrer mon RDV') }}</button>
+{{ form_end(form) }}

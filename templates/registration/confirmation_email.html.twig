@@ -1,6 +1,15 @@
-<h1>Bonjour, merci de confirmer votre adresse email</h1>
+{# //rajouter le logo du site
+//rajouter le lien vers le site
+//rajouter le lien vers le compte #}
+
+<img src="http://127.0.0.1:8000/images/home/logo.jpg" alt="logo-sauv" width="100" height="100">
+
+<h1> Bonjour! {{user.nom}} ❤️, merci de confirmer votre adresse email</h1>
 
 <p>
+    Vous avez créé un compte sur le site SAUV.
+<p>
+
     Merci de confirmer votre adresse email en cliquant sur le lien suivant :
     <br><br>
     <a href="{{ signedUrl|raw }}"> Confirmer mon email </a>.
@@ -8,5 +17,8 @@
 </p>
 
 <p>
+    Si vous n'avez pas créé de compte sur le site SAUV, merci d'ignorer ce message.
+<p>
+
     Cordialement, l'équipe SAUV.
 </p>

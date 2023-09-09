@@ -34,6 +34,7 @@ class RegistrationController extends AbstractController
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
+        $user->setRoles(["ROLE_USER"]);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
@@ -43,6 +44,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -54,8 +56,9 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('contact@sauv.com', 'L\'équipe SAUV'))
                     ->to($user->getEmail())
-                    ->subject('Veuillez confirmer votre adresse email')
+                    ->subject("Confirmez votre adresse email | SAUV")
                     ->htmlTemplate('registration/confirmation_email.html.twig')
+                    ->context(['user' => $user])
             );
             // do anything else you need here, like send an email
 
@@ -67,6 +70,7 @@ $this->addFlash('success', 'Votre inscription a bien été prise en compte. Veui
         return $this->render('registration/register.html.twig', [
             'home' => $home,
             'registrationForm' => $form->createView(),
+
         ]);
     }
 
@@ -81,11 +85,12 @@ $this->addFlash('success', 'Votre inscription a bien été prise en compte. Veui
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_register');         
         }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+        // @TODO Change the redirect on success and handle or remove the flash message in your templates)
+        $this->addFlash('success', 'Votre email a bien été verifié.');
+
 
         return $this->redirectToRoute('app_register');
     }

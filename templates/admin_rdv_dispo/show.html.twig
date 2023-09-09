@@ -1,0 +1,38 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}RdvDispo{% endblock %}
+
+{% block body %}
+    <h1>RdvDispo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Date</th>
+                <td> Le {{ rdv_dispo.date ? rdv_dispo.date|date('d-m-Y') }} de {{ rdv_dispo.starttime ? rdv_dispo.starttime|date('H:i') : '' }}h à {{ rdv_dispo.endtime ? rdv_dispo.endtime|date('H:i')}}h</td>
+            </tr>
+            <tr>
+            
+             <tr>
+                <th>Service concerné</th>
+                <td>{{ rdv_dispo.day }}</td>
+            </tr>
+            <tr>
+            <th> Clients concernés</th>
+            <td>
+            
+            {{ rdv_dispo.client }}
+          
+            <tr>
+                <th>Status</th>
+                <td>{{ rdv_dispo.bookAvail }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_rdv_dispo_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_rdv_dispo_edit', {'id': rdv_dispo.id}) }}">edit</a>
+
+    {{ include('admin_rdv_dispo/_delete_form.html.twig') }}
+{% endblock %}

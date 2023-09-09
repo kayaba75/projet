@@ -24,15 +24,23 @@
 			</ul>
 			{% if app.user is null %}
 				<a href="{{ path('app_register') }}">
-					<button class="btn fw-semibold" type="button" style="">
+					<button class="btn fw-semibold" type="button">
 						<i class="fa fa-user-plus "></i>&nbsp; Créer mon compte</button>
 
-					</a>
+				</a>
 			{% else %}
-				<a href="{{ path('app_login') }}">
+				<a href="{{ path('app_front_user') }}">
 					<button class="btn btn-secondary" type="button">ESPACE PERSONNEL</button>
+				{% endif %}
+			</a>
+			{% if is_granted("ROLE_USER") %}
+
+
+				<a href="{{ path('app_front_rdv_index') }}">
+					<button class="btn btn-warning" type="button" style="margin-left: 10px;margin-right: 1px;"><i class="fa-regular fa-calendar-days m-1"></i>MES RDV</button>
 				</a>
 			{% endif %}
+
 			{% if is_granted("ROLE_ADMIN") %}
 				<a href="{{ path('app_admin') }}" target="_blank">
 					<button class="btn btn-success" type="button" style="margin-left: 10px;margin-right: 1px;">Administration</button>
@@ -41,12 +49,13 @@
 
 			{% if is_granted("ROLE_USER") %}
 				<a href="{{ path('app_logout') }}">
-					<button class="btn btn-warning" type="button" style="margin-left: 10px;margin-right: 24px;">Déconnexion</button>
+					<button class="btn btn-danger" type="button" style="margin-left: 10px;margin-right: 24px;">Déconnexion</button>
 				</a>
 			{% else %}
 				<a href="{{ path('app_login') }}">
 					<button class="btn fw-semibold" type="button">
-					<i class="fa fa-plug"></i>&nbsp; Connexion</button></a>
+						<i class="fa fa-plug"></i>&nbsp; Connexion</button>
+				</a>
 			{% endif %}
 		</div>
 	</div>

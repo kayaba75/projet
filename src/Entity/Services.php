@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ServicesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ServicesRepository::class)]
@@ -33,6 +35,23 @@ class Services
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
+
+    #[ORM\OneToMany(mappedBy: 'services', targetEntity: Rdv::class)]
+    private Collection $rdvs;
+
+    public function __construct()
+    {
+        $this->rdvs = new ArrayCollection();
+
+    
+    }
+        // ====================================================== //
+    // =================== MAGIC FUNCTION =================== //
+    // ====================================================== //
+    public function __toString():string{
+        return $this->titre;
+    }
+    
 
     public function getId(): ?int
     {
@@ -119,6 +138,36 @@ class Services
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Rdv>
+     */
+    public function getRdvs(): Collection
+    {
+        return $this->rdvs;
+    }
+
+    public function addRdv(Rdv $rdv): static
+    {
+        if (!$this->rdvs->contains($rdv)) {
+            $this->rdvs->add($rdv);
+            $rdv->setServices($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRdv(Rdv $rdv): static
+    {
+        if ($this->rdvs->removeElement($rdv)) {
+            // set the owning side to null (unless already changed)
+            if ($rdv->getServices() === $this) {
+                $rdv->setServices(null);
+            }
+        }
 
         return $this;
     }

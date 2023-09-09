@@ -1,0 +1,13 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Edit RdvDispo{% endblock %}
+
+{% block body %}
+    <h1>Edit RdvDispo</h1>
+
+    {{ include('admin_rdv_dispo/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_admin_rdv_dispo_index') }}">back to list</a>
+
+    {{ include('admin_rdv_dispo/_delete_form.html.twig') }}
+{% endblock %}

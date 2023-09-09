@@ -1,16 +1,5 @@
-.parallax {
-  /* The image used */
-
-
-  /* Set a specific height */
-  min-height: 200px;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; 
-  
+body{
+  overflow-x: hidden;
 }
 aside.clients img {
   margin: 50px auto;
@@ -212,3 +201,21 @@ aside.clients img {
 .services .icon-box:hover .icon i {
   color: #fff;
 }
+
+
+.parallax-container {
+  background: url("../images/home/tree-g0bd897c29_1920.jpg");
+  background-position:center 5px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top: 10px;
+  width: 100%; /* Largeur de 100% pour occuper toute la largeur de la page */ /* Ajustez la taille de l'image de fond selon vos besoins */
+}
+
+@media (max-width: 100%) {
+  .parallax-container {
+      background-attachment: scroll;
+  }
+}
+
