@@ -8,6 +8,7 @@
 {% set partenairesActive = "" %}
 {% set newsActive = "" %}
 {% set RdvDispoActive = "" %}
+{% set messagesActive = "" %}
 {# On vérifie si un mot est contenu dans la route (barre d'adresse) et si c'est le cas on modifie la valeur de la variable concernée #}
 {% if "dashboard" in app.request.pathinfo %}
 {% set dashboardActive = "active" %}
@@ -27,6 +28,8 @@
 {% set RdvDispoActive = "active" %}
 {% elseif "news" in app.request.pathinfo %}
 {% set newsActive = "active" %}
+{% elseif "messages" in app.request.pathinfo %}
+{% set messagesActive = "active" %}
 {% endif %}
 <!DOCTYPE html>
 <html>

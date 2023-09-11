@@ -62,8 +62,8 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-// rajouter un message flash pour la confirmation d'inscription
-$this->addFlash('success', 'Votre inscription a bien été prise en compte. Veuillez confirmer votre adresse email.');
+// rajouter un message flash pour la confirmation d'inscription avec une icone mail
+$this->addFlash('success', 'Votre inscription a bien été prise en compte. <br> <i class="fa fa-envelope"></i> Vous allez recevoir un email de confirmation pour valider votre compte.');
             return $this->redirectToRoute('app_login');
         }
 

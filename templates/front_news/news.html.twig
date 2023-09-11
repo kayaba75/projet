@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ home.titre }}
+{% endblock %}
+
+{% block body %}
+
+	{# debut carrousel #}
+
+	{# On vérifie si on a des carousels #}
+		{% if news|length > 0 %}
+			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel"> <div
+				class="carousel-indicators">
+				{# On fait une boucle sur le tableau des carousels pour faire les indicators #}
+				{% for news in news %}
+					<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ loop.index0 }}" {% if loop.index0 == 0 %} class="active" aria-current="true" {% endif %} aria-label="Slide {{ loop.index }}"></button>
+				{% endfor %}
+			</div>
+			<div class="carousel-inner rounded">
+				{% for news in news %}
+					<div class="carousel-item {% if loop.index0 == 0 %}active" data-bs-interval="4000" {% else %} data-bs-interval="2000" {% endif %} style="height:350px">
+						<img src="{{ asset('images/news/' ~ news.imageName ) }}" class="d-block w-100" alt="...">
+						{% if news.titre is not null or news.description is not null %}
+							<div class="carousel-caption d-none d-md-block">
+								{% if news.titre is not null %}
+									<h5 class="fw-bold" >{{ news.titre }}
+									</h5>
+									<i>
+										{{ news.createdAt ? news.createdAt|date('d-m-Y') : '' }}
+									</i>
+								{% endif %}
+								{% if news.description is not null %}
+									<p class="">{{ news.description|length > 150|raw ? news.description|slice(0,150)|raw :news.description|raw}}
+										{{ news.description|length > 150? '...' : ''}}</p>
+									<a href="{{ path('app_front_news', {'slug': news.slug }) }}" class="btn btn-dark">Voir la news</a>
+
+								{% endif %}
+							</div>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Précèdent</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Suivant</span>
+			</button>
+		</div>
+	{% endif %}
+	{# fin carrousel #}
+
+	<div class="container py-4 py-xl-5">
+		<h1 class="text-center mb-5">Les dernières actualités</h1>
+		<div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+			{% for news in news %}
+				{% if news.titre is not null %}
+					<div class="col">
+						<div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="{{ asset('images/news/' ~ news.imageName )}}">
+							<div class="card-body p-4" data-bss-hover-animate="pulse">
+								<p class="text-primary card-text mb-0">{{ news.createdAt ? news.createdAt|date('d-m-Y') : '' }}</p>
+								<h4 class="card-title">{{ news.titre }}</h4>
+								{# on rajoute un maximum de caractere à news.description et en raw #}
+
+								<p class="card-text">
+									{{ news.description|length > 150|raw ? news.description|slice(0,150)|raw :news.description|raw}}
+									{{ news.description|length > 150? '...' : ''}}</p>
+								<a href="{{ path('app_front_news', {'slug': news.slug }) }}" class="btn btn-dark">Voir</a>
+
+
+								<div class="d-flex">
+									<div></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+
+
+	{% include '@templates/front_common/_partenaires.html.twig' %}
+
+
+{% endblock %}

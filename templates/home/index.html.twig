@@ -11,22 +11,27 @@
 		<div class="row gy-4 row-cols-1 row-cols-md-1 row-cols-xl-3">
 			{% for service in services %}
 				<div class="col">
-					<div class="card" data-bss-hover-animate="pulse">
-						<div class="card-body p-4">
-							<div class="bs-icon-md bs-icon-rounded" >
-								<i class="d-flex justify-content-center fa-solid fa-{{ service.iconName }} fa-2xl mb-4" style="color: #000000"></i>
+					<a href="{{ path('app_front_services_show', {'slug': service.slug }) }}" style="text-decoration:none">
+
+						<div class="card" data-bss-hover-animate="pulse">
+
+							<div class="card-body p-4">
+								<div class="bs-icon-md bs-icon-rounded">
+									<i class="d-flex justify-content-center fa-solid fa-{{ service.iconName }} fa-2xl mb-4" style="color: #000000"></i>
+								</div>
+								<h4 class="text-uppercase d-flex justify-content-center card-title">{{ service.titre }}</h4>
+								<p class="card-text">{{ service.description }}</p>
 							</div>
-							<h4 class="text-uppercase d-flex justify-content-center card-title">{{ service.titre }}</h4>
-							<p class="card-text">{{ service.description }}</p>
 						</div>
+											</a>
+
 					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
 
 
+			</div>
 		</div>
-	</div>
-	{% include '@templates/front_common/_top-section.html.twig' %}
-	{% include '@templates/front_common/_news.html.twig' %}
-	{% include '@templates/front_common/_partenaires.html.twig' %}
-{% endblock %}
+		{% include '@templates/front_common/_top-section.html.twig' %}
+		{% include '@templates/front_common/_news.html.twig' %}
+		{% include '@templates/front_common/_partenaires.html.twig' %}
+	{% endblock %}
