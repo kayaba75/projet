@@ -32,21 +32,23 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
           
-            
+            // rajouter un icone oeil pour voir le mot de passe
             ->add('plainPassword', PasswordType::class, [
-            
-                'required'=>true,
 
+                'label' => 'Mot de passe',
+                'help' => 'Votre mot de passe doit contenir au moins 6 caractères.',
+                'required'=>true,
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password', "class"=>"form-control rf-input-field"],
+                'attr' => ['autocomplete' => 'new-password', "class"=>"form-control rf-input-field rf-password-field rf-password-field--show-password"],
                 "row_attr"=>["class"=>"rf-input-container"],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez entrer un mot de passe',
                         
-                    ]),
+                    ]
+                ),
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
