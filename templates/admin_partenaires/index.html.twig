@@ -3,28 +3,34 @@
 {% block title %}Partenaires index{% endblock %}
 
 {% block body %}
-    <h1>Partenaires index</h1>
+<div class="d-flex justify-content-between align-items-center">
 
-    <table class="table">
-        <thead>
+    <h1>Partenaires index</h1>
+        <a href="{{ path('app_admin_partenaires_new') }}"class="btn btn-success">Nouveau</a>
+
+</div>
+
+    <table class="table table-index table-striped table-responsive">        <thead>
             <tr>
-                <th>Id</th>
+                {# <th>Id</th> #}
                 <th>Titre</th>
-                <th>ImageName</th>
-                <th>IsActive</th>
-                <th>actions</th>
+                <th>Image</th>
+                <th>Active?</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
         {% for partenaire in partenaires %}
             <tr>
-                <td>{{ partenaire.id }}</td>
+                {# <td>{{ partenaire.id }}</td> #}
                 <td>{{ partenaire.titre }}</td>
                 <td>{{ partenaire.imageName }}</td>
                 <td>{{ partenaire.isActive ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_admin_partenaires_show', {'id': partenaire.id}) }}">show</a>
-                    <a href="{{ path('app_admin_partenaires_edit', {'id': partenaire.id}) }}">edit</a>
+                <td>                
+                {% include "admin_partenaires/_delete_form.html.twig" %}
+
+                    <a href="{{ path('app_admin_partenaires_show', {'id': partenaire.id}) }}" class="btn btn-dark w-100 m-1">Voir</i></a>
+                    <a href="{{ path('app_admin_partenaires_edit', {'id': partenaire.id}) }}" class="btn btn-success w-100 m-1">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +41,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_partenaires_new') }}">Create new</a>
 {% endblock %}

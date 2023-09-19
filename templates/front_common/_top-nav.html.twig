@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-body navbar-light bg-light py-3">
+<nav class="navbar navbar-expand-lg bg-body navbar-light bg-light py-3">
     <div class="container">
         {# rajouter un lien vers l'accueil #}
         <a href="{{ path('app_home') }}" class="navbar-brand">
@@ -10,49 +10,64 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navcol-3">
-            <ul class="navbar-nav mx-auto flex-nowrap">
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
                     <a class="nav-link active fs-5 fw-semibold" href="{{ path('app_home') }}">ACCUEIL</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active fs-5 fw-semibold" href="{{ path('app_front_services') }}">SERVICES</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link fs-5 fw-semibold" href="{{ path('app_front_news2') }}">INFOS-RETRAITE</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fs-5 fw-semibold" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ACTUALITES
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{ path('app_front_news2') }}">Toutes les news</a>
+                        </li>
+                        {% if categories is not null %}
+                            {% for categorie in categories %}
+                                <li>
+                                    <a class="dropdown-item" href="{{ path('app_front_categorie', {'slug': categorie.slug }) }}">
+                                        {{ categorie.nom }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link fs-5 fw-semibold" href="{{ path('app_front_contact') }}">CONTACT</a>
                 </li>
             </ul>
+
             {% if app.user is null %}
-                <a href="{{ path('app_register') }}">
-                    <button class="btn fw-semibold" type="button">
-                        <i class="fa fa-user-plus "></i>&nbsp; Créer mon compte
-                    </button>
+                <a href="{{ path('app_register') }}" class="btn text-white" style="background-color:#025fa5">
+                    <i class="fa fa-user-plus"></i> Créer mon compte
                 </a>
             {% else %}
-                <a href="{{ path('app_front_user') }}">
-                    <button class="btn btn-secondary" type="button">ESPACE PERSONNEL</button>
-                </a>
+                <a href="{{ path('app_front_user') }}" class="btn text-white" style="background-color:#025fa5">ESPACE PERSONNEL</a>
             {% endif %}
             {% if is_granted("ROLE_USER") %}
-                <a href="{{ path('app_front_rdv_index') }}">
-                    <button class="btn btn-warning" type="button" style="margin-left: 10px;margin-right: 1px;"><i class="fa-regular fa-calendar-days m-1"></i>MES RDV</button>
+                <a href="{{ path('app_front_rdv_index') }}" class="btn btn-warning" style="margin-left: 10px;">
+                    <i class="fa-regular fa-calendar-days m-1"></i>MES RDV
                 </a>
             {% endif %}
             {% if is_granted("ROLE_ADMIN") %}
                 <a href="{{ path('app_admin') }}" target="_blank">
-                    <button class="btn btn-success" type="button" style="margin-left: 10px;margin-right: 1px;">Administration</button>
+                    <button class="btn text-white" type="button" style="background-color:#7a164c; margin-left:10px">Admin</button>
                 </a>
             {% endif %}
             {% if is_granted("ROLE_USER") %}
                 <a href="{{ path('app_logout') }}">
-                    <button class="btn btn-danger" type="button" style="margin-left: 10px;margin-right: 24px;">Déconnexion</button>
+                    <button class="btn btn-danger" type="button" style="margin-left: 10px;">Déconnexion</button>
                 </a>
             {% else %}
                 <a href="{{ path('app_login') }}">
-                    <button class="btn fw-semibold" type="button">
-                        <i class="fa fa-plug"></i>&nbsp; Connexion</button>
+                    <button class="btn text-white" type="button" style="background-color:#7a164c; margin-left:10px">
+                        <i class="fa fa-plug"></i> Connexion
+                    </button>
                 </a>
             {% endif %}
         </div>

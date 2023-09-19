@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Form\UserType;
+use App\Repository\CategorieRepository;
 use App\Repository\HomeRepository;
+use App\Repository\ServicesRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +16,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 class FrontUserController extends AbstractController
 {
     #[Route('/user', name: 'app_front_user')]
-    public function index(Request $request,HomeRepository $homeRepository, EntityManagerInterface $entityManagerInterface, UserPasswordHasherInterface $userPasswordHasherInterface): Response
+    public function index(Request $request,HomeRepository $homeRepository, EntityManagerInterface $entityManagerInterface, UserPasswordHasherInterface $userPasswordHasherInterface, CategorieRepository $categorieRepository, ServicesRepository $servicesRepository): Response
     {
         //on récupère l'utilisateur connecté   
         $user = $this->getUser();
@@ -45,6 +47,8 @@ class FrontUserController extends AbstractController
         return $this->render('front_user/index.html.twig', [
             'form' => $form->createView(),
             'home' => $homeRepository->findOneBy(["isActive"=>true]),
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
+            'services' => $servicesRepository->findBy(["isActive"=>true]),
         ]);
     }
 }

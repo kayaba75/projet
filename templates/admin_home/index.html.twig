@@ -37,10 +37,9 @@
 </td>
                 <td>{{ home.isActive ? 'Oui' : 'Non' }}</td>
                 <td>
-                
-                <a href="{{ path('app_admin_home_show', {'id': home.id}) }}" class="btn btn-dark"><i class="align-middle" data-feather="eye"></i></a>
-                <a href="{{ path('app_admin_home_edit', {'id': home.id }) }}" class="btn btn-success"><i class="align-middle" data-feather="edit-2"></i></a>
                 {% include "admin_home/_delete_form.html.twig" %}
+                <a href="{{ path('app_admin_home_show', {'id': home.id}) }}" class="btn btn-dark w-100 m-1">Voir</i></a>
+                <a href="{{ path('app_admin_home_edit', {'id': home.id }) }}" class="btn btn-success w-100 m-1">Modifier</a>
                 </td>
             </tr>
         {% else %}

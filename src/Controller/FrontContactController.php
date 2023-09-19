@@ -6,6 +6,8 @@ use App\Entity\Contact;
 use App\Form\ContactType;
 use Symfony\Component\Mime\Email;
 use App\Repository\HomeRepository;
+use App\Repository\ServicesRepository;
+use App\Repository\CategorieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
@@ -16,7 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FrontContactController extends AbstractController
 {
     #[Route('/contact', name: 'app_front_contact')]
-    public function index(Request $request,HomeRepository $homeRepository, EntityManagerInterface $entityManagerInterface, MailerInterface $mailerInterface): Response
+    public function index(Request $request,HomeRepository $homeRepository, EntityManagerInterface $entityManagerInterface, MailerInterface $mailerInterface, CategorieRepository $categorieRepository, ServicesRepository $servicesRepository): Response
     {
             // On met en place le formulaire de contact
             $contact = new Contact();
@@ -53,10 +55,11 @@ class FrontContactController extends AbstractController
         }
 
         return $this->render('front_contact/index.html.twig', [
-            'controller_name' => 'FrontContactController',
             'home' => $homeRepository->findOneBy(["isActive"=>true]),
             // On envoie le formulaire de contact à la vue
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
+            'services' => $servicesRepository->findBy(["isActive"=>true]),
         ]);
     }
 }

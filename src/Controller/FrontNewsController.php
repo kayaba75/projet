@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CalculHomeRepository;
+use App\Repository\CategorieRepository;
 use App\Repository\HomeRepository;
 use App\Repository\NewsRepository;
 use App\Repository\PartenairesRepository;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class FrontNewsController extends AbstractController
 {
     #[Route('/news', name: 'app_front_news2')]
-    public function index2(NewsRepository $newsRepository, HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $calculHomeRepository, PartenairesRepository $partenairesRepository): Response
+    public function index2(NewsRepository $newsRepository, HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $calculHomeRepository, PartenairesRepository $partenairesRepository, CategorieRepository $categorieRepository): Response
     {
         $home = $homeRepository->findOneBy(["isActive"=>true]);
         // classer les news par date de création de la plus récente à la plus ancienne
@@ -26,13 +27,14 @@ class FrontNewsController extends AbstractController
             // 'lastnews' => $lastnews,
             'services' => $servicesRepository->findBy(["isActive"=>true]),
             'partenaires' => $partenairesRepository->findBy(["isActive"=>true]),
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
             ]);
     }
 
 
 
     #[Route('/news/{slug}', name: 'app_front_news')]
-    public function index($slug, NewsRepository $newsRepository, HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $calculHomeRepository, PartenairesRepository $partenairesRepository): Response
+    public function index($slug, NewsRepository $newsRepository, HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $calculHomeRepository, PartenairesRepository $partenairesRepository, CategorieRepository $categorieRepository): Response
     {
         $home = $homeRepository->findOneBy(["isActive"=>true]);
         // classer les news par date de création de la plus récente à la plus ancienne
@@ -45,6 +47,8 @@ class FrontNewsController extends AbstractController
             // 'lastnews' => $lastnews,
             'services' => $servicesRepository->findBy(["isActive"=>true]),
             'partenaires' => $partenairesRepository->findBy(["isActive"=>true]),
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
+        
             ]);
     }
 }   

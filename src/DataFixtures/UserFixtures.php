@@ -27,10 +27,14 @@ public function __construct(UserPasswordHasherInterface $encoder)
         $user->setEmail('admin@sauv.com');
         $user->setRoles(['ROLE_USER' , 'ROLE_ADMIN']);
         $user->setPassword($this->encoder->hashPassword($user, "Lol123"));
+        $user->setPrenom('admin');
+        $user->setNom('admin');
         $manager->persist($user);
 
         $user = new User();
         $user->setEmail('user@sauv.com');
+        $user->setPrenom('user');
+        $user->setNom('user');
         $user->setRoles(['ROLE_USER']);
         $user->setPassword($this->encoder->hashPassword($user, "Lol123"));
         $manager->persist($user);

@@ -35,8 +35,8 @@
                 </a>
                 <td>
                 {% include "admin_news/_delete_form.html.twig" %}
-                    <a href="{{ path('app_admin_news_show', {'id': news.id}) }}"class="btn btn-dark w-100 m-1">Voir</i></a>
-                    <a href="{{ path('app_admin_news_edit', {'id': news.id}) }}"class="btn btn-success w-100 m-1">Modifier</a>
+                    <a href="{{ path('app_admin_news_show', {'id': news.id}) }}" class="btn btn-dark w-100 m-1">Voir</i></a>
+                    <a href="{{ path('app_admin_news_edit', {'id': news.id}) }}" class="btn btn-success w-100 m-1">Modifier</a>
                 </td>
             </tr>
         {% else %}

@@ -13,7 +13,7 @@ class ServicesFixtures extends Fixture
          //service 1
         $services = new Services();
         $services->setTitre('Calcul de votre retraite');
-        $services->setDescription('La possibilité de calculer votre retraite en ligne, en quelques clics, est un service proposé par la Caisse nationale d’assurance vieillesse (Cnav).');
+        $services->setDescription('La possibilité de calculer votre retraite en ligne ou avec un de nos conseiller expert retraite. ');
         $services->setIconName('calculator');
         $services->setIsActive(true);
         $services->setSlug('calcul-de-votre-retraite');

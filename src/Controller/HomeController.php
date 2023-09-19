@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\CalculHomeRepository;
+use App\Repository\CategorieRepository;
 use App\Repository\HomeRepository;
 use App\Repository\NewsRepository;
 use App\Repository\PartenairesRepository;
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $CalculHomeRepository, PartenairesRepository $partenairesRepository, NewsRepository $newsRepository ): Response
+    public function index(HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $CalculHomeRepository, PartenairesRepository $partenairesRepository, NewsRepository $newsRepository, CategorieRepository $categorieRepository): Response
     {
 
         $home = $homeRepository->findOneBy(["isActive"=>true]);
@@ -28,6 +29,7 @@ class HomeController extends AbstractController
             'calcul_home' => $calculHome,
             'partenaires' => $partenaires,
             'news' => $news,
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
         ]);
     }
     

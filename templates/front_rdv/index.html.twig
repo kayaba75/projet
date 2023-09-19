@@ -27,10 +27,17 @@
 				<tr>
 					<td>{{ rdv.id }}</td>
 					{# si le résultat de status = en attente alors affiché en orange #}
-					{% if rdv.status == 'En attente' %}
+					{% if rdv.rdvDispo.bookAvail == "En attente" %}
 						<td style="color: orange">{{ rdv.rdvDispo.bookAvail }}</td>
-					{% else %}
+					
+					{% endif %}
+					
+					{% if rdv.rdvDispo.bookAvail == "Confirmé" %}
 						<td style="color: green">{{ rdv.rdvDispo.bookAvail }}</td>
+						
+					{% endif %}
+					{% if rdv.rdvDispo.bookAvail == "Annulé" %}
+						<td style="color: red">{{ rdv.rdvDispo.bookAvail }}</td>
 						{% endif %}
 						<td>{{ rdv.services }}</td>
 						<td>{{ rdv.rdvDispo }}</td>

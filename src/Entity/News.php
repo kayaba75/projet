@@ -44,6 +44,16 @@ class News
     #[ORM\Column]
     private ?bool $isActive = null;
 
+    #[ORM\ManyToOne(inversedBy: 'newss')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
+    //too string
+    public function __toString(): string
+    {
+        return $this->titre;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +164,18 @@ class News
     public function setIsActive(bool $isActive): static
     {
         $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

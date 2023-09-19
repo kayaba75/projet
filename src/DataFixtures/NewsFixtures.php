@@ -18,7 +18,9 @@ class NewsFixtures extends Fixture
         $news->setCreatedAt(new \DateTime());
         $news->setUpdatedAt(new \DateTime());
         $news->setIsActive(true);
-        $manager->persist($news);        
+        $news->setCategorie($this->getReference(CategorieFixtures::LEGISLATION));
+        $manager->persist($news);    
+            
         
         $news = new News();
         $news->setTitre('La nouvelle réforme');
@@ -28,6 +30,8 @@ class NewsFixtures extends Fixture
         $news->setCreatedAt(new \DateTime());
         $news->setUpdatedAt(new \DateTime());
         $news->setIsActive(true);
+        $news->setCategorie($this->getReference(CategorieFixtures::MES_DROITS));
+
         $manager->persist($news);        
         
         $news = new News();
@@ -38,7 +42,9 @@ class NewsFixtures extends Fixture
         $news->setCreatedAt(new \DateTime());
         $news->setUpdatedAt(new \DateTime());
         $news->setIsActive(true);
-        $manager->persist($news);                
+        $news->setCategorie($this->getReference(CategorieFixtures::SANTE));
+        $manager->persist($news);      
+        
         
         $news = new News();
         $news->setTitre('Le cumul emploi retraite');
@@ -91,6 +97,7 @@ class NewsFixtures extends Fixture
         $news->setCreatedAt(new \DateTime());
         $news->setUpdatedAt(new \DateTime());
         $news->setIsActive(true);
+        $news->setCategorie($this->getReference(CategorieFixtures::MES_DROITS));
         $manager->persist($news);           
         
         
@@ -169,6 +176,7 @@ class NewsFixtures extends Fixture
         $news->setCreatedAt(new \DateTime());
         $news->setUpdatedAt(new \DateTime());
         $news->setIsActive(true);
+        $news->setCategorie($this->getReference(CategorieFixtures::LEGISLATION));
         $manager->persist($news);      
 
         $news = new News();
@@ -219,6 +227,7 @@ class NewsFixtures extends Fixture
         $news->setCreatedAt(new \DateTime());
         $news->setUpdatedAt(new \DateTime());
         $news->setIsActive(true);
+        $news->setCategorie($this->getReference(CategorieFixtures::MES_DROITS));
         $manager->persist($news);    
 
         $manager->flush();

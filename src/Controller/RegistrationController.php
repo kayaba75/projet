@@ -4,7 +4,9 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\CategorieRepository;
 use App\Repository\HomeRepository;
+use App\Repository\ServicesRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -27,7 +29,7 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, HomeRepository $homeRepository): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager, HomeRepository $homeRepository, CategorieRepository $categorieRepository, ServicesRepository $servicesRepository): Response
     {
         $home = $homeRepository->findOneBy(["isActive"=>true]);
 
@@ -70,6 +72,8 @@ $this->addFlash('success', 'Votre inscription a bien été prise en compte. <br>
         return $this->render('registration/register.html.twig', [
             'home' => $home,
             'registrationForm' => $form->createView(),
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
+            'services' => $servicesRepository->findBy(["isActive"=>true]),
 
         ]);
     }

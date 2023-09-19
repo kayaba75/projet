@@ -7,47 +7,94 @@
 	{# si l'url contient calcul-de-votre-retraite #}
 
 	{% if 'calcul-de-votre-retraite' in app.request.uri %}
-	{# tout centrer #}
-<div class="container text-center">
-		<h2>
-			{{ services.titre }}
-		</h2>
+		{# tout centrer #}
+		<div class="container text-center">
+			<h2 class="pb-2">
+				{{ service.titre }}
+			</h2>
 
-		<p>
-			Le calcul de votre retraite est une démarche qui permet de connaitre le montant de votre retraite.
-			Des erreurs peuvent être commises lors du calcul de votre retraite. 
-			C'est pour cela qu'il est important de faire appel à un expert en retraite.
-			Notre conseiller expert en retraite vous accompagne dans vos démarches.
-			
-		</p>
-		<a href="{{ path('app_front_rdv_new') }}"><button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Prendre rendez-vous</button> </a>
-	</div>
+			<p class="d-inline-block fs-6 lh-lg">
+				Le calcul de votre retraite est une démarche qui permet de connaitre le montant de votre retraite.
+											Des erreurs peuvent être commises lors du calcul de votre retraite.
+				<br>
+				C'est pour cela qu'il est important de faire appel à un expert en retraite.
+											Notre conseiller expert en retraite vous accompagne dans vos démarches.
+											Il vous aide à calculer votre retraite avec précision pour éviter les erreurs lors de votre départ à la retraite.
+				<br>
+				<h5>
+					Pourquoi faire appel à un expert en retraite ?
+				</h5>
+				<br>
+				L'augmentation de l'espérance de vie et la baisse du taux de natalité ont un impact sur le système de retraite.
+											De plus en plus de personnes partent à la retraite chaque année.
+				<br>
+				Le système de retraite est donc de plus en plus sollicité, les erreurs de calcul de retraite sont de plus en plus fréquentes.
+
+			</p>
+			<a href="{{ path('app_front_rdv_new') }}">
+				<button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Prendre rendez-vous</button>
+			</a>
+		</div>
 	{% else %}
 		{% if 'expertise-retraite' in app.request.uri %}
+			<div class="container text-center d-inline-block fs-6 lh-lg">
 
-			<h2>
-				{{ services.titre }}
-			</h2>
-			<p>
-				L'expert en retraite est un professionnel qui vous accompagne dans vos démarches de retraite.
-			</p>
-		<a href="{{ path('app_front_rdv_new') }}"><button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Prendre rendez-vous</button> </a>
-
-		{% else %}
-			{% if 'regularisation-de-carriere' in app.request.uri %}
-
-				<h2>
-					{{ services.titre }}
+				<h2 class="pb-2">
+					{{ service.titre }}
 				</h2>
-				<p>
-					Nous vous aidons à régulariser votre retraite. Pour cela, nous vous accompagnons dans vos démarches.
-					La régularisation de carrière est une démarche qui permet de corriger les erreurs de carrière.
-					Notre expert en retraite vous accompagne dans vos démarches.
-				</p>
-		<a href="{{ path('app_front_rdv_new') }}"><button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Prendre rendez-vous</button> </a>
+
+<p>La retraite est une &eacute;tape importante de la vie, marqu&eacute;e par la transition d&#39;une carri&egrave;re professionnelle active &agrave; une p&eacute;riode de repos bien m&eacute;rit&eacute;e.<br />
+Cependant, la planification de la retraite peut &ecirc;tre complexe et souvent source de pr&eacute;occupations. C&#39;est l&agrave; que &quot;Expertise Retraite&quot; entre en jeu pour vous offrir une tranquillit&eacute; d&#39;esprit inestimable. Notre service &quot;Expertise Retraite&quot; est con&ccedil;u pour vous accompagner tout au long de votre parcours de pr&eacute;paration &agrave; la retraite.<br />
+Que vous soyez &agrave; l&#39;aube de votre carri&egrave;re, en milieu de parcours ou sur le point de prendre votre retraite, notre &eacute;quipe d&#39;experts chevronn&eacute;s est l&agrave; pour vous fournir les conseils et les informations n&eacute;cessaires pour maximiser vos avantages de retraite.</p>
+
+<h4><u><strong>Les principaux avantages de notre service &quot;Expertise Retraite&quot; incluent :</strong></u></h4>
+
+<p><br />
+<strong>1:</strong> Un examen complet de votre situation de retraite actuelle et future.<br />
+<strong>2: </strong>Une analyse d&eacute;taill&eacute;e de vos prestations de retraite actuelles et futures.<br />
+<strong>3: </strong>Des conseils sur la fa&ccedil;on de maximiser vos prestations de retraite.<br />
+<strong>4:</strong> Des conseils sur la fa&ccedil;on de r&eacute;duire vos imp&ocirc;ts &agrave; la retraite.<br />
+<strong>5:</strong> Un suivis personnalis&eacute; de votre dossier de retraite.</p>
+				<a href="{{ path('app_front_rdv_new') }}">
+					<button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Prendre rendez-vous</button>
+				</a>
+			</div>
+
+			{% else %}
+				{% if 'regularisation-de-carriere' in app.request.uri %}
+		<div class="container text-center d-inline-block fs-6 lh-lg">
+
+					<h2 class="pb-2">
+						{{ service.titre }}
+					</h2>
+
+<p>Votre carri&egrave;re professionnelle est une partie essentielle de votre vie, et elle m&eacute;rite d&#39;&ecirc;tre pleinement reconnue et r&eacute;gularis&eacute;e.</p>
+
+<p>Nous comprenons que les questions li&eacute;es &agrave; votre parcours professionnel peuvent parfois &ecirc;tre compliqu&eacute;es et source de pr&eacute;occupations.</p>
+
+<p>C&#39;est pourquoi nos conseillers est l&agrave; pour vous offrir une solution compl&egrave;te.</p>
+
+<p>Notre service est sp&eacute;cialement con&ccedil;u pour vous aider &agrave; faire la lumi&egrave;re sur votre histoire professionnelle, &agrave; identifier les erreurs &eacute;ventuelles dans votre dossier de carri&egrave;re, et &agrave; vous assurer que toutes vos ann&eacute;es de travail soient correctement enregistr&eacute;es pour vos droits futurs.</p>
+
+<p>Nous commen&ccedil;ons par une analyse minutieuse de votre parcours professionnel, y compris les emplois que vous avez occup&eacute;s, les p&eacute;riodes de ch&ocirc;mage, les p&eacute;riodes de formation, etc.</p>
+
+<p>Notre &eacute;quipe d&#39;experts qualifi&eacute;s examine votre dossier de carri&egrave;re pour d&eacute;tecter les erreurs, les omissions et les incoh&eacute;rences qui pourraient affecter vos droits &agrave; la retraite ou &agrave; d&#39;autres avantages sociaux.</p>
+
+<p>Si des erreurs sont identifi&eacute;es, nous travaillons en &eacute;troite collaboration avec les organismes concern&eacute;s pour corriger votre dossier de carri&egrave;re et vous assurer que toutes vos ann&eacute;es de travail soient correctement prises en compte.</p>
+
+<p>En veillant &agrave; ce que votre carri&egrave;re soit r&eacute;gularis&eacute;e, nous maximisons vos droits &agrave; la retraite, aux prestations sociales et &agrave; d&#39;autres avantages auxquels vous pourriez avoir droit.</p>
+
+<p>Notre engagement envers vous ne se limite pas &agrave; la r&eacute;gularisation initiale. Nous surveillons votre dossier de carri&egrave;re au fil du temps pour nous assurer que toutes les mises &agrave; jour et les corrections n&eacute;cessaires sont effectu&eacute;es.</p>
+
+
+
+<a href="{{ path('app_front_rdv_new') }}">
+						<button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Prendre rendez-vous</button>
+					</a>
+				{% endif %}
 			{% endif %}
 		{% endif %}
-	{% endif %}
+	</div>
 	<section
 		class="services">
 		<!-- Étapes de prise de rendez-vous -->

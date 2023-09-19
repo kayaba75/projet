@@ -24,10 +24,26 @@ class RdvType extends AbstractType
                 'placeholder' => 'Choisir un service',
                 'required' => true,
             ])
+      
+    
+
+                     // si rdv_dispo.bookAvail = en attente alors on affiche le rdv_dispo.bookAvail
             ->add('rdvDispo' , null, [
                 'label' => 'Rendez vous :',
                 'placeholder' => 'Choisir un rendez vous',
                 'required' => true,
+                'choice_label' => function ($rdvDispo) {
+                    // Vérifiez si le rendez-vous est en attente avant de l'afficher
+                    if ($rdvDispo->getBookAvail() === 'En attente') {
+                        return $rdvDispo;
+                    } else {
+                        // faire un return de $rdvDispo avec des balises <s>
+                        return null;
+                        
+                        
+                        
+                    }
+                },
             ])  
         
 

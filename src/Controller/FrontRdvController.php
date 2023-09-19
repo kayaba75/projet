@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Rdv;
 use App\Form\RdvType;
 use App\Entity\Services;
+use App\Repository\CategorieRepository;
 use App\Repository\RdvRepository;
 use App\Repository\HomeRepository;
 use App\Repository\ServicesRepository;
@@ -19,17 +20,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FrontRdvController extends AbstractController
 {
     #[Route('/', name: 'app_front_rdv_index', methods: ['GET'])]
-    public function index(RdvRepository $rdvRepository, HomeRepository $homeRepository, UserRepository $userRepository): Response
+    public function index(RdvRepository $rdvRepository, HomeRepository $homeRepository, UserRepository $userRepository, CategorieRepository $categorieRepository, ServicesRepository $servicesRepository): Response
     {
         return $this->render('front_rdv/index.html.twig', [
             'rdvs' => $rdvRepository->findAll(),
             'home' => $homeRepository->findOneBy(["isActive"=>true]),
-            'users' => $userRepository->findAll()
+            'users' => $userRepository->findAll(),
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
+            'services' => $servicesRepository->findBy(["isActive"=>true]),
+            
         ]);
     }
 
     #[Route('/new', name: 'app_front_rdv_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, HomeRepository $homeRepository,UserRepository $userRepository): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, HomeRepository $homeRepository,UserRepository $userRepository, CategorieRepository $categorieRepository, ServicesRepository $servicesRepository): Response
     {
         $rdv = new Rdv();
         $form = $this->createForm(RdvType::class, $rdv);
@@ -60,6 +64,9 @@ class FrontRdvController extends AbstractController
             'rdv' => $rdv,
             'form' => $form,
             'home' => $homeRepository->findOneBy(["isActive"=>true]),
+            'users' => $userRepository->findAll(),
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
+            'services' => $servicesRepository->findBy(["isActive"=>true]),
         ]);
     }
 
@@ -72,7 +79,7 @@ class FrontRdvController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_front_rdv_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Rdv $rdv, EntityManagerInterface $entityManager, HomeRepository $homeRepository,): Response
+    public function edit(Request $request, Rdv $rdv, EntityManagerInterface $entityManager, HomeRepository $homeRepository,CategorieRepository $categorieRepository, ServicesRepository $servicesRepository): Response
     {
         $form = $this->createForm(RdvType::class, $rdv);
         $form->handleRequest($request);
@@ -87,6 +94,8 @@ class FrontRdvController extends AbstractController
             'rdv' => $rdv,
             'form' => $form,
             'home' => $homeRepository->findOneBy(["isActive"=>true]),
+            'categories' => $categorieRepository->findBy(["isActive"=>true]),
+            'services' => $servicesRepository->findBy(["isActive"=>true]),
         ]);
     }
 
