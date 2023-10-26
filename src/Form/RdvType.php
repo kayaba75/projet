@@ -18,15 +18,11 @@ class RdvType extends AbstractType
     {
         $builder
             ->remove('status')
-
             ->add('services', null, [
                 'label' => 'Service :',
                 'placeholder' => 'Choisir un service',
                 'required' => true,
             ])
-      
-    
-
                      // si rdv_dispo.bookAvail = en attente alors on affiche le rdv_dispo.bookAvail
             ->add('rdvDispo' , null, [
                 'label' => 'Rendez vous :',
@@ -39,24 +35,16 @@ class RdvType extends AbstractType
                     } else {
                         // faire un return de $rdvDispo avec des balises <s>
                         return null;
-                        
-                        
-                        
                     }
                 },
             ])  
-        
-
             ->add('commentaire' , TextType::class, [
                 'attr' => [
                     'placeholder' => 'Ecrivez votre commentaire ici',
                 ],
                 'label' => 'Commentaire :',
                 'required' => false,
-            
-            ])
-        
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

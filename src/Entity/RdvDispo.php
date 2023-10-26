@@ -49,11 +49,11 @@ class RdvDispo
     // ====================================================== //
     public function __toString(){
         return sprintf(
-         'Le: %s, De: %s, A: %s',
+        'Le: %s, De: %s, A: %s',
         $this->date->format('d/m/Y'),
         $this->starttime->format('H:i'),
         $this->endtime->format('H:i')
-       );
+    );
     }
 
 

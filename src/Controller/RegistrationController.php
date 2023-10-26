@@ -62,7 +62,7 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
                     ->context(['user' => $user])
             );
-            // do anything else you need here, like send an email
+    
 
 // rajouter un message flash pour la confirmation d'inscription avec une icone mail
 $this->addFlash('success', 'Votre inscription a bien été prise en compte. <br> <i class="fa fa-envelope"></i> Vous allez recevoir un email de confirmation pour valider votre compte.');

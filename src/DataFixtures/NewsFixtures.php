@@ -10,6 +10,7 @@ class NewsFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
+        // News 1
         $news = new News();
         $news->setTitre('Legislation retraite');
         $news->setDescription("Loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
@@ -21,7 +22,7 @@ class NewsFixtures extends Fixture
         $news->setCategorie($this->getReference(CategorieFixtures::LEGISLATION));
         $manager->persist($news);    
             
-        
+        // News 2
         $news = new News();
         $news->setTitre('La nouvelle réforme');
         $news->setDescription("Loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
@@ -31,9 +32,9 @@ class NewsFixtures extends Fixture
         $news->setUpdatedAt(new \DateTime());
         $news->setIsActive(true);
         $news->setCategorie($this->getReference(CategorieFixtures::MES_DROITS));
+        $manager->persist($news);    
 
-        $manager->persist($news);        
-        
+        // News 3
         $news = new News();
         $news->setTitre('La vaccination obligatoire');
         $news->setDescription("Loreum ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.");
@@ -45,7 +46,7 @@ class NewsFixtures extends Fixture
         $news->setCategorie($this->getReference(CategorieFixtures::SANTE));
         $manager->persist($news);      
         
-        
+        // News 4
         $news = new News();
         $news->setTitre('Le cumul emploi retraite');
         $news->setDescription("Cumul intégral d’une retraite et d’un revenu d’activité Vous devez au préalable avoir obtenu toutes vos retraites de base et complémentaires des régimes français, étrangers et des organisations internationales. Il s’agit des retraites dont vous remplissez les conditions d'attribution (notamment la condition d’âge de départ)

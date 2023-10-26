@@ -32,7 +32,10 @@ class UserType extends AbstractType
                 'first_options' => ['label' => 'Mot de passe'],
                 'second_options' => ['label' => 'Répétez le mot de passe'],
                 'help' => 'Le mot de passe doit contenir au moins 6 caractères.',
-                ],
+                'attr' => ['autocomplete' => 'new-password', "class"=>"form-control rf-input-field rf-password-field rf-password-field--show-password"],
+                "row_attr"=>["class"=>"rf-input-container"],
+            
+            ],
             )
             ->add('nom')
             ->add('prenom')

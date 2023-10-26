@@ -25,7 +25,6 @@ class FrontRdvController extends AbstractController
         return $this->render('front_rdv/index.html.twig', [
             'rdvs' => $rdvRepository->findAll(),
             'home' => $homeRepository->findOneBy(["isActive"=>true]),
-            'users' => $userRepository->findAll(),
             'categories' => $categorieRepository->findBy(["isActive"=>true]),
             'services' => $servicesRepository->findBy(["isActive"=>true]),
             
@@ -41,17 +40,19 @@ class FrontRdvController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {;
             
-            // recupere le services.titre pour l'envoyer dans getRdvDispo dans la classe setDays
+            // Récupere le services.titre pour l'envoyer dans getRdvDispo dans la classe setDays
             $services = $rdv->getServices()->getTitre();
+            // Récupère l'identifiant de l'utilisateur actuel
             $nom = $this->getUser()->getUserIdentifier();;
-            // set le setStatus à en attente
+            // Set le setStatus à en attente
             $rdv->setStatus("En attente");
+            // Définit le client le statut et le jour de la réservation dans RdvDispo
             $rdv->getRdvDispo()->setClient($nom);
             $rdv->getRdvDispo()->setBookAvail("En attente");
             $rdv->getRdvDispo()->setDay($services);      
             $entityManager->persist($rdv);
             $entityManager->flush();
-            // faire un add flash de confirmation
+            // Faire un add flash de confirmation
             $this->addFlash(
                 'alert alert-success',
                 "Votre rendez vous a bien été enregistrée !"
@@ -64,7 +65,6 @@ class FrontRdvController extends AbstractController
             'rdv' => $rdv,
             'form' => $form,
             'home' => $homeRepository->findOneBy(["isActive"=>true]),
-            'users' => $userRepository->findAll(),
             'categories' => $categorieRepository->findBy(["isActive"=>true]),
             'services' => $servicesRepository->findBy(["isActive"=>true]),
         ]);

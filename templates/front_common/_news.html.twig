@@ -5,14 +5,18 @@
 				<div class="col">
 					<div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="{{ asset('images/news/' ~ news.imageName )}}">
 						<div class="card-body p-4" data-bss-hover-animate="pulse">
-							<p class="text-primary card-text mb-0">{{ news.createdAt ? news.createdAt|date('d-m-Y') : '' }} <a href="{{ path('app_front_categorie', {'slug': news.categorie.slug }) }}"> {{ news.categorie }} </a></p>
-							
+							<p class="text-primary card-text mb-0">{{ news.createdAt ? news.createdAt|date('d-m-Y') : '' }}
+								<a href="{{ path('app_front_categorie', {'slug': news.categorie.slug }) }}">
+									{{ news.categorie }}
+								</a>
+							</p>
+
 							<h4 class="card-title">{{ news.titre }}</h4>
 							{# on rajoute un maximum de caractere à news.description et en raw #}
 
 							<p class="card-text">
-                            {{ news.description|length > 150|raw ? news.description|slice(0,150)|raw :news.description|raw}}
-                            {{ news.description|length > 150? '...' : ''}}</p>
+								{{ news.description|length > 150|raw ? news.description|slice(0,150)|raw :news.description|raw}}
+								{{ news.description|length > 150? '...' : ''}}</p>
 							<a href="{{ path('app_front_news', {'slug': news.slug }) }}" class="btn btn-dark">Voir</a>
 
 

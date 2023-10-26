@@ -31,7 +31,6 @@ class FrontUserController extends AbstractController
                 $user->setPassword($userPasswordHasherInterface->hashPassword($user,
                         $request->request->get('plainPassword')));
                         $entityManagerInterface->persist($user);
-
         
             }
             // On enregistre l'utilisateur en base de données

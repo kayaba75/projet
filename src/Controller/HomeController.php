@@ -15,7 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
-    public function index(HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $CalculHomeRepository, PartenairesRepository $partenairesRepository, NewsRepository $newsRepository, CategorieRepository $categorieRepository): Response
+    public function index(HomeRepository $homeRepository, ServicesRepository $servicesRepository, CalculHomeRepository $CalculHomeRepository, PartenairesRepository $partenairesRepository, 
+    NewsRepository $newsRepository, CategorieRepository $categorieRepository): Response
     {
 
         $home = $homeRepository->findOneBy(["isActive"=>true]);

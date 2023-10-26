@@ -7,28 +7,6 @@
 {% block body %}
 
 
-	{# <div class="container py-4 py-xl-5">
-		<div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-			{% for service in services %}
-				<div class="col">
-					<div class="card" data-bss-hover-animate="pulse">
-						<div class="card-body p-4">
-							<div class="bs-icon-md bs-icon-rounded d-flex justify-content-xxl-center align-items-xxl-center d-inline-block mb-3 bs-icon" style="padding-bottom: 0px;padding-right: 0px;padding-left: 0px;margin-bottom: 11px;margin-left: 158px;margin-right: 158px;">
-								<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewbox="0 0 16 16" class="bi bi-{{ service.iconName}} fs-1 text-dark">
-									<i class="fa-solid fa-{{ service.iconName }} fa-2xl" style="color: #000000;"></i>
-								</svg>
-							</div>
-							<h4 class="text-uppercase d-xxl-flex justify-content-xxl-center card-title">{{ service.titre }}</h4>
-							<p class="card-text">{{ service.description|raw }}</p>
-						</div>
-					</div>
-				</div>
-			{% endfor %}
-
-		</div>
-	</div> #}
-	{# faire un lien en italic pour retourner à l'accueil #}
-
 	<div class="container py-4 py-xl-5 shadow-lg p-3 mb-5 bg-white rounded">
 		<a href="{{ path('app_home') }}" class="text-decoration-none text-dark">
 		<i class="fa-solid fa-arrow-left"></i>

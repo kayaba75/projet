@@ -9,10 +9,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CountryType;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
@@ -31,10 +28,8 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-          
-            // rajouter un icone oeil pour voir le mot de passe
-            ->add('plainPassword', PasswordType::class, [
 
+            ->add('plainPassword', PasswordType::class, [
                 'label' => 'Mot de passe',
                 'help' => 'Votre mot de passe doit contenir au moins 6 caractères.',
                 'required'=>true,
@@ -59,20 +54,6 @@ class RegistrationFormType extends AbstractType
             ])
             // rajouter le style input du css dans le formulaire
             ->add('nom' , TextType::class, ["required"=>false, "attr"=>["class"=>"form-control rf-input-field"], "row_attr"=>["class"=>"rf-input-container"]])
-            // ->add('prenom', TextType::class, ["required"=>false])
-            // ->add('adresse', TextType::class, ["required"=>false])
-            // // ->add('codePostal', TextType::class, ["required"=>false])
-            // ->add('pays', CountryType::class, ["required"=>false])
-            // ->add('ville', TextType::class , ["required"=>false] )
-            // ->add('tel', TelType::class, ["required"=>false])
-            // ->add('dateDeNaissance', BirthdayType::class, [
-            //     'format' => 'dd MM yyyy',
-            //     "placeholder"=>[
-            //         "day"=>"Jour",
-            //         "month"=>"Mois",
-            //         "year"=>"Année",
-            //     ],
-            //     "required"=>false])  
         ;
     }
 
