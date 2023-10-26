@@ -55,9 +55,20 @@ Que vous soyez &agrave; l&#39;aube de votre carri&egrave;re, en milieu de parcou
 <strong>3: </strong>Des conseils sur la fa&ccedil;on de maximiser vos prestations de retraite.<br />
 <strong>4:</strong> Des conseils sur la fa&ccedil;on de r&eacute;duire vos imp&ocirc;ts &agrave; la retraite.<br />
 <strong>5:</strong> Un suivis personnalis&eacute; de votre dossier de retraite.</p>
-				<a href="{{ path('app_front_rdv_new') }}">
+{# si l'utilisateur a le role_user alors affiché #}
+{% if is_granted("ROLE_USER") %}				
+<a href="{{ path('app_front_rdv_new') }}">
 					<button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Prendre rendez-vous</button>
 				</a>
+				{% else %}
+				<p> Merci de vous inscrire ou vous connecter pour pouvoir réserver un rendez-vous </p> 
+				<a href="{{ path('app_front_login') }}">
+				<button class="btn btn-primary" type="button" style="background: var(--bs-warning);">Se connecter</button></a>
+				<a href="{{ path('app_front_register') }}">
+				<button class="btn btn-primary" type="button" style="background: var(--bs-warning);">S'inscrire</button></a>
+				{% endif %}
+
+
 			</div>
 
 			{% else %}
