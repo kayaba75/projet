@@ -21,6 +21,23 @@ class NewsRepository extends ServiceEntityRepository
         parent::__construct($registry, News::class);
     }
 
+
+/**
+* @return News[] Returns an array of News objects
+*/
+// Trier les news par date de publication
+public function findByDate($news): array
+{
+    return $this->createQueryBuilder('n')
+        ->orderBy('n.createdAt', 'DESC')
+        ->setParameter('news', $news)
+        ->andWhere('n.isActive = :val')
+        ->setMaxResults(4)
+        ->getQuery()
+        ->getResult()
+    ;
+}
+
 //    /**
 //     * @return News[] Returns an array of News objects
 //     */
