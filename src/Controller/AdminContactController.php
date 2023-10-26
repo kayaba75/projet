@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/contact')]
+#[Route('/adminxd4f54sdf/contact')]
 class AdminContactController extends AbstractController
 {
     #[Route('/', name: 'app_admin_contact_index', methods: ['GET'])]

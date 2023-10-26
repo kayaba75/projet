@@ -13,8 +13,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminDashboardController extends AbstractController
 {
-    #[Route('/admin', name: 'app_admin')]
-    #[Route('/admin/dashboard', name: 'app_admin_dashboard')]
+    #[Route('/adminxd4f54sdf', name: 'app_admin')]
+    #[Route('/adminxd4f54sdf/dashboard', name: 'app_admin_dashboard')]
     public function index(HomeRepository $homeRepository, UserRepository $userRepository,NewsRepository $newsRepository, ContactRepository $contactRepository,RdvRepository $rdvRepository): Response
     {
         $nbnews = $newsRepository->findBy(["isActive"=>true]);

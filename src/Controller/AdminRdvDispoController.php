@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/admin/rdv/dispo')]
+#[Route('/adminxd4f54sdf/rdv/dispo')]
 class AdminRdvDispoController extends AbstractController
 {
     #[Route('/', name: 'app_admin_rdv_dispo_index', methods: ['GET'])]

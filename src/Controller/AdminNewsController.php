@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-#[Route('/admin/news')]
+#[Route('/adminxd4f54sdf/news')]
 class AdminNewsController extends AbstractController
 {
     #[Route('/', name: 'app_admin_news_index', methods: ['GET'])]
