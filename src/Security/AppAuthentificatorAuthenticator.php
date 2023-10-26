@@ -53,7 +53,11 @@ class AppAuthentificatorAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($this->urlGenerator->generate('app_admin'));
         }
         if(in_array('ROLE_USER', $user->getRoles())){
+
             return new RedirectResponse($this->urlGenerator->generate('app_home'));
+            // rajouter un message 
+            
+            
         }
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
