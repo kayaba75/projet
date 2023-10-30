@@ -43,7 +43,7 @@ class FrontNewsController extends AbstractController
         return $this->render('front_news/index.html.twig', [
             'home' => $home,
             'new' => $newsRepository->findOneBy(["slug"=>$slug]),
-            'news' => $newsRepository->findBy(["isActive"=>true], ["createdAt"=>"DESC"]),
+            'news' => $newsRepository->findBy(["isActive"=>true], ["createdAt"=>"DESC"], 6),
             // 'lastnews' => $lastnews,
             'services' => $servicesRepository->findBy(["isActive"=>true]),
             'partenaires' => $partenairesRepository->findBy(["isActive"=>true]),

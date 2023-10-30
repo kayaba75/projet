@@ -57,7 +57,6 @@ class FrontRdvController extends AbstractController
                 'alert alert-success',
                 "Votre rendez vous a bien été enregistrée !"
             );
-
             return $this->redirectToRoute('app_front_rdv_index', [], Response::HTTP_SEE_OTHER);
         }
 

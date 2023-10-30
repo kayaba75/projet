@@ -23,7 +23,7 @@ class RdvType extends AbstractType
                 'placeholder' => 'Choisir un service',
                 'required' => true,
             ])
-                     // si rdv_dispo.bookAvail = en attente alors on affiche le rdv_dispo.bookAvail
+                    // si rdv_dispo.bookAvail = en attente alors on affiche le rdv_dispo.bookAvail
             ->add('rdvDispo' , null, [
                 'label' => 'Rendez vous :',
                 'placeholder' => 'Choisir un rendez vous',
@@ -33,11 +33,9 @@ class RdvType extends AbstractType
                     if ($rdvDispo->getBookAvail() === 'En attente') {
                         return $rdvDispo;
                     } else {
-                        // faire un return de $rdvDispo avec des balises <s>
+                    // faire un return de $rdvDispo avec des balises <s>
                         return null;
-                    }
-                },
-            ])  
+                    }},])  
             ->add('commentaire' , TextType::class, [
                 'attr' => [
                     'placeholder' => 'Ecrivez votre commentaire ici',
@@ -46,7 +44,6 @@ class RdvType extends AbstractType
                 'required' => false,
             ]);
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
